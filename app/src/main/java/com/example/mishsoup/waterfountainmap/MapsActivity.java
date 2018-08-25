@@ -163,7 +163,7 @@ public class MapsActivity extends FragmentActivity implements
 
             lastLocation = location;
 
-            if (currentUserLocationMarker != null) {
+  /**          if (currentUserLocationMarker != null) {
             currentUserLocationMarker.remove();
 
             }
@@ -179,6 +179,8 @@ public class MapsActivity extends FragmentActivity implements
 
             mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomBy(12));
+
+   **/
 
             if (googleApiClient != null) {
 
