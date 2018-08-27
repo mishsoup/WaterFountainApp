@@ -80,6 +80,8 @@ public class MapsActivity extends FragmentActivity implements
 
             mMap.setMyLocationEnabled(true);
 
+            Toast.makeText(this, "Map Ready", Toast.LENGTH_SHORT).show();
+
 
             return;
         }
@@ -168,7 +170,12 @@ public class MapsActivity extends FragmentActivity implements
 
             }
 
+   **/
+
+
             LatLng latLng = new LatLng(location.getLatitude(),location.getLongitude());
+
+            /**
 
             MarkerOptions markerOptions = new MarkerOptions();
             markerOptions.position(latLng);
@@ -177,10 +184,11 @@ public class MapsActivity extends FragmentActivity implements
 
             currentUserLocationMarker = mMap.addMarker(markerOptions);
 
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
-            mMap.animateCamera(CameraUpdateFactory.zoomBy(12));
-
    **/
+
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomBy(10));
+
 
             if (googleApiClient != null) {
 
