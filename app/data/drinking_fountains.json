@@ -1,6 +1,4 @@
-{"name":"Drinking Fountains","type":"FeatureCollection"
-,"crs":{"type":"name","properties":{"name":"EPSG:26910"}}
-,"features":[
+[
 {"type":"Feature","geometry":{"type":"Point","coordinates":[498017.093693596,5453586.31539583]},"properties":{"MAPID":"DFPB0001","NAME":"Fountain location:\nAberdeen Park","LOCATION":"plaza","MAINTAINER":"Parks","IN_OPERATION":"spring to fall","PHOTO_NAME":"Aberdeen Park - drinking fountain - 2005.JPG"}}
 ,{"type":"Feature","geometry":{"type":"Point","coordinates":[498245.17358667,5458134.41756872]},"properties":{"MAPID":"DFPB0002","NAME":"Fountain location:\nAdanac Park","LOCATION":"SW side of Field house","MAINTAINER":"Parks","IN_OPERATION":"spring to fall"}}
 ,{"type":"Feature","geometry":{"type":"Point","coordinates":[489645.860550449,5459221.81728467]},"properties":{"MAPID":"DFPB0003","NAME":"Fountain location:\nAlexandra Park","LOCATION":"west plaza gateway","MAINTAINER":"Parks","IN_OPERATION":"spring to fall","PHOTO_NAME":"Alexandra Park - drinking fountain - 2003.jpg"}}
@@ -252,4 +250,4 @@
 ,{"type":"Feature","geometry":{"type":"Point","coordinates":[491664.555402346,5458853.71612269]},"properties":{"MAPID":"DFENG0606","NAME":"Temporary Fountain location: Richards & Dunsmuir","LOCATION":"500 Block Richards","MAINTAINER":"Engineering","IN_OPERATION":"Temporary","PET_FRIENDLY":"N"}}
 ,{"type":"Feature","geometry":{"type":"Point","coordinates":[490262.202938685,5459754.17244623]},"properties":{"MAPID":"DFENG0607","NAME":"Temporary Fountain location: Robson & Bidwell","LOCATION":"700 Bidwell Street","MAINTAINER":"Engineering","IN_OPERATION":"Temporary","PET_FRIENDLY":"N"}}
 ,{"type":"Feature","geometry":{"type":"Point","coordinates":[492759.109787565,5457910.21536212]},"properties":{"MAPID":"DFENG0602","NAME":"Temporary Fountain location: Thornton Park","LOCATION":"1166 Main Street","MAINTAINER":"Engineering","IN_OPERATION":"Temporary","PET_FRIENDLY":"N"}}
-]}
+]
