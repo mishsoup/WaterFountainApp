@@ -42,12 +42,13 @@ public static Collection<WaterFountain> parseWaterFountain()throws JSONException
         throw new RuntimeException("Can't read the data");
     }
 
-    JSONArray fountains = new JSONArray(data);
+    JSONObject fountainData = new JSONObject(data);
+    JSONArray features = fountainData.getJSONArray("features");
 
 
 
-    for (int index = 0; index < fountains.length(); index ++) {
-        JSONObject fountain = fountains.getJSONObject(index);
+    for (int index = 0; index < features.length(); index ++) {
+        JSONObject fountain = features.getJSONObject(index);
         waterFountains.add(parseFountain(fountain));
     }
 
@@ -59,7 +60,7 @@ public static Collection<WaterFountain> parseWaterFountain()throws JSONException
 
     public static WaterFountain parseFountain(JSONObject fountain) throws JSONException {
 
-        LatLng latLng = null ;
+        LatLng latLng = null;
         String name = null;
         String location = null;
         String operationTime = null;
