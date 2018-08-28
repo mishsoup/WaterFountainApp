@@ -7,58 +7,45 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 public class WaterFountainDataParser {
 
-public static Collection<WaterFountain> parseWaterFountain()throws JSONException {
+public static List<WaterFountain> parseWaterFountain() throws IOException {
 
-    String data = null;
-    ArrayList<WaterFountain> waterFountains = new ArrayList<>();
+    List<WaterFountain> fountains = null;
 
+    FileInputStream fstream = new FileInputStream("data/FountainData.txt");
+    BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
+    String strLine;
+
+//Read File Line By Line
+    while ((strLine = br.readLine()) != null)   {
+        // parse line by line
+        fountains.add(parseOneLine(strLine));
+    }
+
+//Close the input stream
     try {
-        InputStream is = new FileInputStream("data/drinking_fountains.json");
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        StringBuilder sb = new StringBuilder();
-        String line;
-
-        while((line = br.readLine()) != null) {
-            sb.append(line);
-            sb.append("\n");
-        }
-
         br.close();
-        data = sb.toString();
-
     } catch (IOException e) {
         e.printStackTrace();
-        throw new RuntimeException("Can't read the data");
-    }
-
-    JSONObject fountainData = new JSONObject(data);
-    JSONArray features = fountainData.getJSONArray("features");
-
-
-
-    for (int index = 0; index < features.length(); index ++) {
-        JSONObject fountain = features.getJSONObject(index);
-        waterFountains.add(parseFountain(fountain));
     }
 
 
-
-    return waterFountains;
+    return fountains;
 }
 
 
-    public static WaterFountain parseFountain(JSONObject fountain) throws JSONException {
+    public static WaterFountain parseOneLine(String str) {
 
         LatLng latLng = null;
         String name = null;
@@ -66,22 +53,11 @@ public static Collection<WaterFountain> parseWaterFountain()throws JSONException
         String operationTime = null;
 
 
-
-        JSONObject geometry = fountain.getJSONObject("geometry");
-        JSONArray coordinates = geometry.getJSONArray("coordinates");
-        latLng = new LatLng(coordinates.getDouble(0), coordinates.getDouble(1));
-
-
-        JSONObject properties = fountain.getJSONObject("properties");
-
-        if (!properties.isNull("NAME"))
-            name = properties.getString("NAME");
-
-        if (!properties.isNull("LOCATION"))
-            location = properties.getString("LOCATION");
-
-        if (!properties.isNull("IN_OPERATION"))
-            operationTime = properties.getString("IN_OPERATION");
+        String array[]= str.split(",");
+        latLng = new LatLng(Float.parseFloat(array[1]), Float.parseFloat(array[2]));
+        name = array[3];
+        location = array[4];
+        operationTime = array[6];
 
 
 

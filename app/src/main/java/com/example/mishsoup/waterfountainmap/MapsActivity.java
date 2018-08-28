@@ -27,6 +27,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONException;
+
+import java.util.Collection;
+import java.util.List;
+
 public class MapsActivity extends FragmentActivity implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
@@ -84,7 +89,13 @@ public class MapsActivity extends FragmentActivity implements
 
 
             return;
+
         }
+
+
+
+
+
 
 
         // Add a marker in Sydney and move the camera
