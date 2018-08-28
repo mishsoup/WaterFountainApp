@@ -43,7 +43,6 @@ public class WaterFountain {
         return operationTime;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -1,10 +1,11 @@
 package com.example.mishsoup.waterfountainmap;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.res.AssetManager;
+
 import com.google.android.gms.maps.model.LatLng;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
@@ -18,20 +19,23 @@ import java.util.List;
 
 public class WaterFountainDataParser {
 
-public static List<WaterFountain> parseWaterFountain() throws IOException {
+    public static Context context;
 
-    List<WaterFountain> fountains = null;
 
-    FileInputStream fstream = new FileInputStream("data/FountainData.txt");
+public static List<WaterFountain> parseWaterFountain(Activity activity) throws IOException {
+
+    List<WaterFountain> fountains = new ArrayList<>();
+    AssetManager assetManager = activity.getAssets();
+
+    InputStream fstream = assetManager.open("FountainData.txt");
     BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+
+
 
     String strLine;
 
 //Read File Line By Line
-    while ((strLine = br.readLine()) != null)   {
-        // parse line by line
-        fountains.add(parseOneLine(strLine));
-    }
+    while ((strLine = br.readLine()) != null) fountains.add(parseOneLine(strLine));
 
 //Close the input stream
     try {
@@ -47,17 +51,24 @@ public static List<WaterFountain> parseWaterFountain() throws IOException {
 
     public static WaterFountain parseOneLine(String str) {
 
-        LatLng latLng = null;
-        String name = null;
-        String location = null;
-        String operationTime = null;
+        LatLng latLng;
+        String name ;
+        String location = "N/A";
+        String operationTime = "N/A" ;
 
 
         String array[]= str.split(",");
+
+        if (array.length > 6) {
         latLng = new LatLng(Float.parseFloat(array[1]), Float.parseFloat(array[2]));
         name = array[3];
         location = array[4];
         operationTime = array[6];
+        } else  {
+            latLng = new LatLng(Float.parseFloat(array[1]), Float.parseFloat(array[2]));
+            name = array[3];
+
+        }
 
 
 

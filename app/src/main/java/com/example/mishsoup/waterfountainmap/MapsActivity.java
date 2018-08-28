@@ -29,6 +29,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONException;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.List;
 
@@ -88,8 +89,22 @@ public class MapsActivity extends FragmentActivity implements
             Toast.makeText(this, "Map Ready", Toast.LENGTH_SHORT).show();
 
 
-            return;
+        }
 
+        try {
+            List<WaterFountain> fountains = WaterFountainDataParser.parseWaterFountain(this);
+            for (int i = 0; i < fountains.size(); i ++ ) {
+
+                mMap.addMarker(new MarkerOptions()
+                        .position(fountains.get(i).getLatLng())
+                        .title(fountains.get(i).getName())
+                        .snippet(fountains.get(i).getLocation() + "\nOperation Time: " + fountains
+                                .get(i).getOperationTime())
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
 
 
@@ -98,9 +113,11 @@ public class MapsActivity extends FragmentActivity implements
 
 
 
+
+
         // Add a marker in Sydney and move the camera
-        //       LatLng sydney = new LatLng(-34, 151);
-        //       mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
+               LatLng sydney = new LatLng(-34, 151);
+                  mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         //       mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
     }
