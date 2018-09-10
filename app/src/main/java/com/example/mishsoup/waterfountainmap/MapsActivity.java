@@ -98,7 +98,7 @@ public class MapsActivity extends FragmentActivity implements
                 mMap.addMarker(new MarkerOptions()
                         .position(fountains.get(i).getLatLng())
                         .title(fountains.get(i).getName())
-                        .snippet(fountains.get(i).getLocation() + "\nOperation Time: " + fountains
+                        .snippet(fountains.get(i).getLocation() + " | " + fountains
                                 .get(i).getOperationTime())
                         .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
             }
